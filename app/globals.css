@@ -1,3 +1,4 @@
+cat > app/globals.css << 'EOF'
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,10 +12,10 @@
     --primary: 142.1 76.2% 36.3%;
     --primary-foreground: 355.7 100% 97.9%;
     --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
   }
 }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
 }
+EOF
