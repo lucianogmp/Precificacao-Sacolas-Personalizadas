@@ -8,11 +8,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Package, Settings, TrendingUp } from 'lucide-react';
 
 export default function Home() {
-  const [config, setConfig] = useState({
-    custoHora: 10.69,
-    depreciacaoHora: 1.65, // média aproximada
-    margem: 50,
-  });
+const [config, setConfig] = useState({
+  custoHora: 10.69,
+  depreciacaoHora: 1.65,
+  margem: 50,
+});
 
   return (
     <main className="container mx-auto py-8 px-4 max-w-7xl">
