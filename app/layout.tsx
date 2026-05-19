@@ -6,8 +6,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Sacolas Personalizadas - Precificador",
-  description: "Sistema de precificação inteligente para sacolas personalizadas",
-  icons: { icon: "/favicon.ico" },
+  description: "Sistema de precificacao inteligente para sacolas personalizadas",
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    shortcut: [{ url: "/icon.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({
