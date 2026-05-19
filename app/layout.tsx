@@ -3,13 +3,14 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const basePath = "/Precificacao-Sacolas-Personalizadas";
 
 export const metadata: Metadata = {
   title: "Sacolas Personalizadas - Precificador",
   description: "Sistema de precificacao inteligente para sacolas personalizadas",
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    shortcut: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    icon: [{ url: `${basePath}/icon.svg`, type: "image/svg+xml" }],
+    shortcut: [{ url: `${basePath}/icon.svg`, type: "image/svg+xml" }],
   },
 };
 
