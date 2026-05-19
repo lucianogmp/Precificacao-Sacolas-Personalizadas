@@ -1,4 +1,9 @@
 export type TamanhoSacola = 'P' | 'M' | 'G' | 'GG';
+export type EquipamentoKey = 'facaP' | 'facaM' | 'facaG' | 'facaGG' | 'maquinaCorte' | 'impressora';
+export type TintaKey = 'preta' | 'colorida';
+export type PapelKey = 'offset180' | 'offset240' | 'kraft200';
+export type AlcaKey = 'nylon' | 'cetim' | 'papelTorcido' | 'vazada';
+export type InsumoKey = 'cola' | 'fitaDuplaFace' | 'ilhos';
 
 export interface EquipamentoDepreciavel {
   nome: string;
@@ -44,36 +49,13 @@ export interface CustosFixos {
 
 export interface ConfiguracaoPrecificacao {
   margem: Record<TamanhoSacola, number>;
-  equipamentos: {
-    facaP: EquipamentoDepreciavel;
-    facaM: EquipamentoDepreciavel;
-    facaG: EquipamentoDepreciavel;
-    facaGG: EquipamentoDepreciavel;
-    maquinaCorte: EquipamentoDepreciavel;
-    impressora: EquipamentoDepreciavel;
-  };
-  tintas: {
-    preta: TintaConfig;
-    colorida: TintaConfig;
-  };
-  papeis: {
-    offset180: PapelConfig;
-    offset240: PapelConfig;
-    kraft200: PapelConfig;
-  };
-  papelPorTamanho: Record<TamanhoSacola, keyof ConfiguracaoPrecificacao['papeis']>;
-  alcas: {
-    nylon: AlcaConfig;
-    cetim: AlcaConfig;
-    papelTorcido: AlcaConfig;
-    vazada: AlcaConfig;
-  };
-  alcaPorTamanho: Record<TamanhoSacola, keyof ConfiguracaoPrecificacao['alcas']>;
-  insumos: {
-    cola: InsumoConfig;
-    fitaDuplaFace: InsumoConfig;
-    ilhos: InsumoConfig;
-  };
+  equipamentos: Record<EquipamentoKey, EquipamentoDepreciavel>;
+  tintas: Record<TintaKey, TintaConfig>;
+  papeis: Record<PapelKey, PapelConfig>;
+  papelPorTamanho: Record<TamanhoSacola, PapelKey>;
+  alcas: Record<AlcaKey, AlcaConfig>;
+  alcaPorTamanho: Record<TamanhoSacola, AlcaKey>;
+  insumos: Record<InsumoKey, InsumoConfig>;
   custosFixos: CustosFixos;
   tempos: Record<TamanhoSacola, TempoProducao>;
 }
