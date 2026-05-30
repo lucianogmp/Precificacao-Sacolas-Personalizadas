@@ -32,18 +32,23 @@ function Tabs({ defaultValue, className, ...props }: TabsProps) {
   );
 }
 
-const TabsList = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn('inline-flex h-10 items-center justify-center rounded-md bg-gray-100 p-1 text-gray-500', className)}
-      {...props}
-    />
-  )
-);
+const TabsList = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      'inline-flex h-12 items-center justify-center rounded-xl bg-white/[0.04] border border-white/[0.06] p-1 text-gray-400 backdrop-blur-sm',
+      className
+    )}
+    {...props}
+  />
+));
 TabsList.displayName = 'TabsList';
 
-interface TabsTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface TabsTriggerProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   value: string;
 }
 
@@ -58,8 +63,10 @@ const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
         type="button"
         data-state={active ? 'active' : 'inactive'}
         className={cn(
-          'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 disabled:pointer-events-none disabled:opacity-50',
-          active && 'bg-white text-gray-950 shadow-sm',
+          'inline-flex items-center justify-center whitespace-nowrap rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 disabled:pointer-events-none disabled:opacity-50',
+          active
+            ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-lg shadow-emerald-500/20'
+            : 'text-gray-400 hover:text-gray-200 hover:bg-white/[0.05]',
           className
         )}
         onClick={() => tabs.setValue(value)}
@@ -79,7 +86,16 @@ const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
     const tabs = useTabs();
     if (tabs.value !== value) return null;
 
-    return <div ref={ref} className={cn('mt-2 focus-visible:outline-none', className)} {...props} />;
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          'mt-4 animate-fade-in focus-visible:outline-none',
+          className
+        )}
+        {...props}
+      />
+    );
   }
 );
 TabsContent.displayName = 'TabsContent';
